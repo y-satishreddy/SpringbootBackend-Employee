@@ -23,7 +23,7 @@ public class EmployeeApplication {
 	
 	@Bean
 	EmployeeRepository repository() {
-		Emplogit add .yeeRepository repository = new EmployeeRepository();
+		EmployeeRepository repository = new EmployeeRepository();
 		repository.add(new Employee(1L, 1L, "John Smith", 34, "Analyst"));
 		repository.add(new Employee(1L, 1L, "Darren Hamilton", 37, "Manager"));
 		repository.add(new Employee(1L, 1L, "Tom Scott", 26, "Developer"));
