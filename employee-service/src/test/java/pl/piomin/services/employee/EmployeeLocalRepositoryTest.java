@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.util.Assert;
 import pl.piomin.services.employee.model.Employee;
-import pl.piomin.services.employee.repository.EmployeeRepository;
+import pl.piomin.services.employee.repository.EmployeeLocalRepository;
 
 import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class EmployeeRepositoryTest {
+public class EmployeeLocalRepositoryTest {
 
-    private static final EmployeeRepository repository = new EmployeeRepository();
+    private static final EmployeeLocalRepository repository = new EmployeeLocalRepository();
 
     @Test
     @Order(1)
