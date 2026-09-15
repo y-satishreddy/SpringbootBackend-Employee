@@ -45,6 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee onboardEmployee(OnboardEmployeeRequestDTO requestDTO) {
 
+        logger.info("Request entered service | name={} | departmentId={} ", requestDTO.getName(),requestDTO.getDepartmentId());
+        
         try {
 
             // 1. Validate department
