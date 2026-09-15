@@ -6,11 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.annotation.EnableKafka;
 import pl.piomin.services.department.model.Department;
-import pl.piomin.services.department.repository.DepartmentRepository;
+import pl.piomin.services.department.repository.InmemoryDepartmentRepository;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableKafka
 @OpenAPIDefinition(info =
 	@Info(title = "Department API", version = "1.0", description = "Documentation Department API v1.0")
 )
@@ -21,8 +23,8 @@ public class DepartmentApplication {
 	}
 	
 	@Bean
-	DepartmentRepository repository() {
-		DepartmentRepository repository = new DepartmentRepository();
+	InmemoryDepartmentRepository repository() {
+		InmemoryDepartmentRepository repository = new InmemoryDepartmentRepository();
 		repository.add(new Department(1L, "Development"));
 		repository.add(new Department(1L, "Operations"));
 		repository.add(new Department(2L, "Development"));

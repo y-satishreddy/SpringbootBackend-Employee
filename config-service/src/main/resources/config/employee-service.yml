@@ -8,7 +8,7 @@ eureka:
       defaultZone: http://localhost:8061/eureka/
   instance:
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-      
+
 logging:
   pattern:
     console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){blue} %clr([%X{traceId:-},%X{spanId:-}]){cyan} %clr(${LOG_LEVEL_PATTERN:-%5p}) %m%n"
@@ -21,7 +21,6 @@ springdoc:
   api-docs:
     version: openapi_3_1
 
-
 management:
   tracing:
     sampling:
@@ -32,27 +31,46 @@ management:
         include: health,sbom
 
 spring:
-    output:
-      ansi:
-        enabled: always
+  output:
+    ansi:
+      enabled: always
 
-    kafka:
-      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
 
-      producer:
-        key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
-    datasource:
-      url: ${DB_URL:jdbc:mysql://localhost:3306/employee}
-      username: ${DB_USERNAME:root}
-      password: ${DB_PASSWORD:S@tish200}
-      driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/employee}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:S@tish200}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true
-      properties:
-        hibernate:
-          format_sql: true
+        format_sql: true
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          DEPARTMENT-SERVICE:
+            connectTimeout: 2000
+            readTimeout: 3000
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      departmentService:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 30s
+        permitted-number-of-calls-in-half-open-state: 3

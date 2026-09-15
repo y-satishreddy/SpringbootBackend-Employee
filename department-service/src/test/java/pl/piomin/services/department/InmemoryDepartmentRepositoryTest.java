@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.util.Assert;
 import pl.piomin.services.department.model.Department;
-import pl.piomin.services.department.repository.DepartmentRepository;
+import pl.piomin.services.department.repository.InmemoryDepartmentRepository;
 
 import java.util.List;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class DepartmentRepositoryTest {
+public class InmemoryDepartmentRepositoryTest {
 
-    private static final DepartmentRepository repository = new DepartmentRepository();
+    private static final InmemoryDepartmentRepository repository = new InmemoryDepartmentRepository();
 
     @Test
     @Order(1)

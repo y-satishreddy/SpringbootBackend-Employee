@@ -17,7 +17,7 @@ public class EmployeeMapper {
 
     public EmployeeOnboardEvent toActiveEmployee(Employee employee) {
         EmployeeOnboardEvent employeeOnboardEvent = new EmployeeOnboardEvent(
-                employee.getId(), employee.getName(), employee.getDepartmentId(), employee.getOnboardingStatus()
+                employee.getId(), employee.getName(), employee.getDepartmentId(), employee.getOnboardingStatus(),employee.getAge(),employee.getPosition()
         );
         return employeeOnboardEvent;
     }

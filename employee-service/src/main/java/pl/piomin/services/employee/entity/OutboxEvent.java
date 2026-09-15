@@ -21,6 +21,8 @@ public class OutboxEvent {
     private String payload;
 
     private LocalDateTime createdAt;
+    @Column(nullable = false)
+    private boolean processing = false;
 
     protected OutboxEvent() {
     }
@@ -55,5 +57,13 @@ public class OutboxEvent {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public boolean isProcessing() {
+        return processing;
+    }
+
+    public void setProcessing(boolean processing) {
+        this.processing = processing;
     }
 }

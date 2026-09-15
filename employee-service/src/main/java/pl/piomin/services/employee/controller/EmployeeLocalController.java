@@ -21,7 +21,6 @@ import pl.piomin.services.employee.service.EmployeeService;
 
 import static net.logstash.logback.argument.StructuredArguments.kv;
 
-@RestController
 public class EmployeeLocalController {
 
 	private EmployeeService employeeService;

@@ -6,11 +6,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import pl.piomin.services.employee.model.Employee;
 import pl.piomin.services.employee.repository.EmployeeLocalRepository;
 
 @SpringBootApplication
 @EnableFeignClients
+@EnableScheduling
 @OpenAPIDefinition(info =
 	@Info(title = "Employee API", version = "1.0", description = "Documentation Employee API v1.0")
 )

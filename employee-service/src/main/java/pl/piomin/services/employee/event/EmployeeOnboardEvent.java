@@ -8,6 +8,25 @@ public class EmployeeOnboardEvent {
     private Long employeeId;
     private String name;
     private Long departmentId;
+    private int age;
+    private String position;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     private OnboardingStatus onboardingStatus;
 
     public EmployeeOnboardEvent() {
@@ -17,12 +36,16 @@ public class EmployeeOnboardEvent {
             Long employeeId,
             String name,
             Long departmentId,
-            OnboardingStatus onboardingStatus) {
+            OnboardingStatus onboardingStatus,
+            int age,
+            String position) {
 
         this.employeeId = employeeId;
         this.name = name;
         this.departmentId = departmentId;
         this.onboardingStatus = onboardingStatus;
+        this.age = age;
+        this.position = position;
     }
 
     public Long getEmployeeId() {

@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import pl.piomin.services.department.client.EmployeeClient;
 import pl.piomin.services.department.model.Department;
-import pl.piomin.services.department.repository.DepartmentRepository;
+import pl.piomin.services.department.repository.InmemoryDepartmentRepository;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ public class DepartmentController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
-	DepartmentRepository repository;
+	InmemoryDepartmentRepository repository;
 	EmployeeClient employeeClient;
 
-	public DepartmentController(DepartmentRepository repository, EmployeeClient employeeClient) {
+	public DepartmentController(InmemoryDepartmentRepository repository, EmployeeClient employeeClient) {
 		this.repository = repository;
 		this.employeeClient = employeeClient;
 	}

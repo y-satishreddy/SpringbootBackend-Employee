@@ -6,14 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="organization-service" />
         <module name="config-service" />
         <module name="department-service" />
-        <module name="discovery-service" />
         <module name="gateway-service" />
+        <module name="organization-service" />
+        <module name="discovery-service" />
         <module name="employee-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="employee-service (1)" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -21,6 +24,7 @@
       <module name="department-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="employee-service" options="-parameters" />
+      <module name="employee-service (1)" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
       <module name="organization-service" options="-parameters" />
     </option>
