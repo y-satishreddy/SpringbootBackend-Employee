@@ -33,7 +33,10 @@ public class DepartmentValidationService {
             DepartmentResponseDTO department =
                     departmentClient.getDepartment(departmentId);
 
-            log.info("Department found: departmentId={}", departmentId);
+            log.info(
+                    "Department found: departmentId={}",
+                    departmentId
+            );
 
             return department;
 
@@ -52,6 +55,24 @@ public class DepartmentValidationService {
             Long departmentId,
             Throwable throwable) {
 
+        /*
+         * Department does not exist.
+         * This is a business exception, not a service failure.
+         */
+        if (throwable instanceof DepartmentNotFoundException) {
+
+            log.warn(
+                    "Department does not exist. Skipping fallback. departmentId={}",
+                    departmentId
+            );
+
+            throw (DepartmentNotFoundException) throwable;
+        }
+
+        /*
+         * Any other exception means the Department Service
+         * is unavailable or failed technically.
+         */
         log.error(
                 "Department service failed for departmentId={}",
                 departmentId,
